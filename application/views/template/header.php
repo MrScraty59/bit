@@ -20,6 +20,7 @@
         
         <link href="<?php echo css_url('bootstrap.min'); ?>" rel="stylesheet" type="text/css"/>
         <link href="<?php echo css_url('font-awesome.min'); ?>" rel="stylesheet" type="text/css"/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <script type="text/javascript" src="<?php echo js_url('vendors/jquery-1.11.2.min'); ?>"></script>
         
     </head>
