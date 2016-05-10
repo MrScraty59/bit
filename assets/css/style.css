@@ -1,0 +1,18 @@
+.hr{
+    text-transform: uppercase;
+    text-align:center;
+    margin:0 auto;
+    padding-top:15px;
+}
+
+.hr:after{
+    content: "";
+    display: block;
+    height: 1px;
+    width: 40%;
+    background: #000000;
+    text-align:center;
+    margin:0 auto;
+    margin-top: 10px;
+    margin-bottom : 10px;
+}
