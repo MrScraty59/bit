@@ -5,8 +5,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Examens extends CI_Controller {
 
     public function index() {
+        $data = Array();
+        $data['examens'] = $this->examen->getAll();
+        foreach($data['examens'] as $exam){
+            $exam->cours = $this->cour->constructeur($exam->idCours)[0];
+        }
+        
         $this->load->view('template/header');
-        $this->load->view('pages/examens/liste');
+        $this->load->view('pages/examens/liste',$data);
         $this->load->view('template/footer');
     }
 
@@ -25,7 +31,24 @@ class Examens extends CI_Controller {
             $examen->idCours = $this->input->post('cours');
             $examen->nom = $this->input->post('titre');
             //On envoie l'examen en BDD
+            
             $examen->id = $this->examen->add($examen);
+            
+            $questions = $this->input->post('questions');
+            $typeQuestions = $this->input->post('typeQuestion');
+            $reponses = $this->input->post('reponse');
+            
+            $size = sizeof($questions) + 1;
+            for($i =1; $i < $size; $i++){
+                $question = new StdClass();
+                $question->idExamen = $examen->id;
+                $question->question = $questions[$i][0];
+                $question->type = $typeQuestions[$i][0];
+                $question->propositions = json_encode($reponses[$i]);
+                $question->points = 1;
+                var_dump($question);
+                $this->question->add($question);
+            }
         }
 
         $this->load->view('template/header');

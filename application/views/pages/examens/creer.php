@@ -24,11 +24,11 @@
                 <div class="control-group row question_block">
                     <div class="col-md-offset-3 col-md-6">
                         <div class="controls col-md-9 col-centered">
-                            <input id="nom" name="questions1[]" type="text" placeholder="Votre question" class="form-control" value="<?php echo set_value('question'); ?>" required>
+                            <input id="nom" name="questions[1][]" type="text" placeholder="Votre question" class="form-control" value="<?php echo set_value('question'); ?>" required>
                             <?php echo form_error('questions'); ?>
                         </div>
                         <div class="col-md-3 col-centered">
-                            <select name="typeQuestion1[]" id="typeQuestion" style="width:100%">
+                            <select name="typeQuestion[1][]" id="typeQuestion" style="width:100%">
                                 <option value="multiple">Choix multiple</option>
                                 <option value="libre">Réponse libre</option>
                             </select>
@@ -39,10 +39,10 @@
                     <div class="col-md-offset-3 col-md-6">
                         <div class="content_rep">
                             <div class="col-md-11">
-                                <input type="text" name="reponse1[]" placeholder="Choix1" class="form-control">
+                                <input type="text" name="reponse[1][]" placeholder="Choix1" class="form-control">
                             </div>
                             <div class="col-md-11">
-                                <input type="text" name="reponse1[]" placeholder="Choix1" class="form-control">
+                                <input type="text" name="reponse[1][]" placeholder="Choix1" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-1">
@@ -62,6 +62,6 @@
 </section>
 <script>
     $('.fa-plus').on('click',function(){
-       $(this).parents('.reponse_block').find('.content_rep').append('<div class="col-md-11"><input type="text" name="reponse1[]" placeholder="Choix1" class="form-control"></div>');
+       $(this).parents('.reponse_block').find('.content_rep').append('<div class="col-md-11"><input type="text" name="reponse[1][]" placeholder="Choix1" class="form-control"></div>');
     });
 </script>
