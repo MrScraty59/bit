@@ -1,5 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+echo $error;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                             
-                        <form id="loginform" class="form-horizontal" role="form">
+                            <?= form_open(base_url('connexion/connexion/')); ?>  
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -53,14 +55,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                      <a id="btn-login" href="#" class="btn btn-success">Login  </a>
+                                      <input id="btn-login"  class="btn btn-success" type="submit" value="Login">
                                     </div>
                                 </div>
 
 
                                 <div class="form-group">
                                     <div class="col-md-12 control">
-                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                        <div style="padding-top:15px; font-size:85%" >
                                             Don't have an account! 
                                         <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
                                             Sign Up Here
@@ -82,14 +84,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
                         </div>  
                         <div class="panel-body" >
-                            <form id="signupform" class="form-horizontal" role="form">
+                            <?= form_open(base_url('connexion/connexion/')); ?> 
                                 
                                 <div id="signupalert" style="display:none" class="alert alert-danger">
                                     <p>Error:</p>
                                     <span></span>
                                 </div>
-                                    
-                                
                                   
                                 <div class="form-group">
                                     <label for="email" class="col-md-3 control-label">Email</label>
@@ -114,13 +114,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <label for="password" class="col-md-3 control-label">Password</label>
                                     <div class="col-md-9">
                                         <input type="password" class="form-control" name="passwd" placeholder="Password">
-                                    </div>
-                                </div>
-                                    
-                                <div class="form-group">
-                                    <label for="icode" class="col-md-3 control-label">Invitation Code</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="icode" placeholder="">
                                     </div>
                                 </div>
 

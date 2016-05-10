@@ -1,1 +1,1 @@
-<?php echo $pseudo; ?>
+<?php var_dump($users); ?>
