@@ -21,6 +21,13 @@
                         <?php echo form_error('cours'); ?>
                     </div>
                 </div>
+                <div class="control-group row col-md-7 question_block">
+                    <label class="control-label col-md-3 col-centered" for="cours">Question *</label>
+                    <div class="controls col-md-9 col-centered">
+                        <input id="nom" name="questions[]" type="text" placeholder="" class="form-control" value="<?php echo set_value('question'); ?>" required> ?
+                        <?php echo form_error('questions'); ?>
+                    </div>
+                </div>
                 <div class='row'>
                     <div class='col-md-12' style='text-align:right;margin-top:30px;'>
                         <input type='submit' class="btn btn-success" value="Créer l'examen"/>
