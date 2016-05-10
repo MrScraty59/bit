@@ -32,25 +32,11 @@ class Examen extends CI_Model {
         return $result;
     }
 
-    public function set_active($id) {
+    public function add($data) {
 
-        $this->db->set('active', "true");
-        $this->db->where('id', $id);
-        $this->db->update($this->table);
-    }
+        $this->db->insert($this->table, $user);
 
-    public function set_inactive($id) {
-
-        $this->db->set('active', "false");
-        $this->db->where('id', $id);
-        $this->db->update($this->table);
-    }
-
-    public function add($user) {
-
-        $result = $this->db->insert($this->table, $user);
-
-        return $result;
+        return $this->db->insert_id();;
     }
 
     public function delete($data = '') {
