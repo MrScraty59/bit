@@ -2,6 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Examens extends CI_Controller {
+    
+    public function index(){
+        $this->load->view('template/header');
+        $this->load->view('pages/examens/liste');
+        $this->load->view('template/footer');
+    }
 
 	public function creer()
 	{
