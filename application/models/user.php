@@ -36,7 +36,7 @@ class User extends CI_Model {
 
         $this->db->insert($this->table, $data);
 
-        return $this->db->insert_id();;
+        return $this->db->insert_id();
     }
 
     public function delete($data = '') {

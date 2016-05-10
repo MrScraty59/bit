@@ -1,7 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-echo $error;
+if(!empty($error))
+    echo $error;
+
+if(!empty($inscription))
+    echo $inscription;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,6 +95,13 @@ echo $error;
                                     <p>Error:</p>
                                     <span></span>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="login" class="col-md-3 control-label">Login</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="login" placeholder="Login">
+                                    </div>
+                                </div>
                                   
                                 <div class="form-group">
                                     <label for="email" class="col-md-3 control-label">Email</label>
@@ -118,9 +130,24 @@ echo $error;
                                 </div>
 
                                 <div class="form-group">
+                                <label for="class" class="col-md-3 control-label">Class </label>
+                                    <!-- TODO GET DATA FROM DB -->
+                                    <div class="col-md-9">                                
+                                    <select class="form-control" name="class" id="class">
+                                        <option>B1</option>
+                                        <option>B2</option>
+                                        <option>B3</option>
+                                        <option>B4</option>
+                                        <option>B5</option>
+                                    </select>
+                                    </div>                                                             
+                                </div>
+
+                                <div class="form-group">
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                                        <!-- <button  type="button" ><i class="icon-hand-right"></i> &nbsp Sign Up</button> -->
+                                        <input id="btn-signup" class="btn btn-info" type="submit" value="Inscription">
                                     </div>
                                 </div>
                                 

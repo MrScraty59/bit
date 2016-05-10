@@ -25,13 +25,24 @@
 
 		public function connexion(){
 
-			if(isset($this->input->post('firstname'))){
+			$data = array();
+
+			if(!empty($this->input->post('firstname'))){
 				// Inscription
 
-				$email = $this->input->post('azddaz');
-				$firstname = $this->input->post('azddaz');
-				$lastname = $this->input->post('azddaz');
-				$passwd = $this->input->post('azddaz');
+				$user = new stdClass();
+
+				$user->login = $this->input->post('login');
+				$user->mail = $this->input->post('email');
+				$user->sexe = 'M';
+				$user->nom = $this->input->post('firstname');
+				$user->prenom = $this->input->post('lastname');
+				$user->password = $this->input->post('passwd');
+				$user->idClasse = 2;
+				$user->droit = 1;
+
+				$data['inscription'] = $this->user->add($user);
+
 
 			}else{
 
@@ -40,14 +51,19 @@
 				$pass = $this->input->post('password');
 			}
 
-			
+			if(!empty($email)){
 
-			$user = $this->user->getUserByEmail($email);
+				$user = $this->user->getUserByEmail($email);
 
-			if(empty($user))
-				$data['error'] = '<p style="color:red">L\'adresse email est incorrect</p>';
-			else
-				$data['error'] = '<p style="color:green">Vous avez réussi a vous connecter</p>';
+				if(empty($user))
+					$data['error'] = '<p style="color:red">L\'adresse email est incorrect</p>';
+				else
+					$data['error'] = '<p style="color:green">Vous avez réussi a vous connecter</p>';
+
+			}
+
+			$data['test'] = $this->user->getAll();
+
 
 			$this->load->view('template/header');
             $this->load->view('pages/connexion/login', $data);
