@@ -37,6 +37,7 @@ class Examens extends CI_Controller {
             $questions = $this->input->post('questions');
             $typeQuestions = $this->input->post('typeQuestion');
             $reponses = $this->input->post('reponse');
+            $points = $this->input->post('point');
             
             $size = sizeof($questions) + 1;
             for($i =1; $i < $size; $i++){
@@ -47,8 +48,7 @@ class Examens extends CI_Controller {
                 if($question->type == "multiple"){
                     $question->propositions = json_encode($reponses[$i]);
                 }
-                $question->points = 1;
-                var_dump($question);
+                $question->points = $points[$i];
                 $this->question->add($question);
             }
         }
