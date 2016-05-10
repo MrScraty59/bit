@@ -8,5 +8,6 @@ class Examens extends CI_Controller {
             if($idMatiere == 0){
                 redirect('/accueil');
             }
+            echo 'test';
 	}
 }
