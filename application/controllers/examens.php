@@ -44,7 +44,9 @@ class Examens extends CI_Controller {
                 $question->idExamen = $examen->id;
                 $question->question = $questions[$i][0];
                 $question->type = $typeQuestions[$i][0];
-                $question->propositions = json_encode($reponses[$i]);
+                if($question->type == "multiple"){
+                    $question->propositions = json_encode($reponses[$i]);
+                }
                 $question->points = 1;
                 var_dump($question);
                 $this->question->add($question);
