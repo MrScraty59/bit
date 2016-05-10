@@ -3,9 +3,9 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Examen extends CI_Model {
+class Cour extends CI_Model {
 
-    protected $table = 'examen';
+    protected $table = 'cours';
 
     public function constructeur($id = 0) {
         if ($id == 0) {
