@@ -34,12 +34,14 @@ class Examens extends CI_Controller {
             
             $examen->id = $this->examen->add($examen);
             
+            var_dump($this->input->post());
+            
             $questions = $this->input->post('questions');
             $typeQuestions = $this->input->post('typeQuestion');
             $reponses = $this->input->post('reponse');
-            $points = $this->input->post('point');
+            $points = $this->input->post('points');
+            $size = sizeof($questions);
             
-            $size = sizeof($questions) + 1;
             for($i =1; $i < $size; $i++){
                 $question = new StdClass();
                 $question->idExamen = $examen->id;
@@ -48,8 +50,8 @@ class Examens extends CI_Controller {
                 if($question->type == "multiple"){
                     $question->propositions = json_encode($reponses[$i]);
                 }
-                $question->points = $points[$i];
-                $this->question->add($question);
+                $question->points = $points[$i][0];
+                //$this->question->add($question);
             }
         }
 
