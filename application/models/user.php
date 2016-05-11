@@ -22,10 +22,22 @@ class User extends CI_Model {
         return $result;
     }
 
-    public function getAll() {
+    public function getProfs() {
 
         $result = $this->db->select('*')
                 ->from($this->table)
+                ->where('droit',1)
+                ->get()
+                ->result();
+
+        return $result;
+    }
+
+    public function getEleves() {
+
+        $result = $this->db->select('*')
+                ->from($this->table)
+                ->where('droit',0)
                 ->get()
                 ->result();
 

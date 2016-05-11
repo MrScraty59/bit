@@ -31,23 +31,23 @@
         </div>
         <div class="row">
             <div class="groupQuestion">
-                <div class="col-md-5 col-md-offset-1 groupQuestionSimple" id="1">
+                <div class="col-md-5 col-md-offset-1 groupQuestionSimple" id="0">
                     <div class="control-group question_block">
                         <div class="col-md-12">
                             <h5 class="hr">Question 1 :</h5>
                         </div>
                         <div class="col-md-12 col-centered">
-                            <select name="typeQuestion[1][]" id="typeQuestion" class="form-control typeQuestion" style="width:100%">
+                            <select name="typeQuestion[0][]" id="typeQuestion" class="form-control typeQuestion" style="width:100%">
                                 <option value="multiple">Choix multiple</option>
                                 <option value="libre">Réponse libre</option>
                             </select>
                         </div>
                         <div class="controls col-md-12 col-centered">
-                            <input id="nom" name="points[1][]" type="text" placeholder="Nombre de points de la question" class="form-control" required>
+                            <input id="nom" name="points[0][]" type="text" placeholder="Nombre de points de la question" class="form-control" required>
                             <?php echo form_error('points'); ?>
                         </div>
                         <div class="controls col-md-12 col-centered">
-                            <input id="nom" name="questions[1][]" type="text" placeholder="Votre question" class="form-control" value="<?php echo set_value('question'); ?>" required>
+                            <input id="nom" name="questions[0][]" type="text" placeholder="Votre question" class="form-control" value="<?php echo set_value('question'); ?>" required>
                             <?php echo form_error('questions'); ?>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                         <div class="col-md-12">
                             <div class="content_rep">
                                 <div class="col-md-11">
-                                    <input type="text" name="reponse[1][]" placeholder="Choix1" class="form-control response">
+                                    <input type="text" name="reponse[0][]" placeholder="Choix1" class="form-control response">
                                 </div>
                             </div>
                             <div class="col-md-1">
@@ -93,7 +93,7 @@
             if ($(this).val() == "libre") {
                 $(this).parents('.groupQuestionSimple').find('.reponse_block').html('');
             } else {
-                $(this).parents('.groupQuestionSimple').find('.reponse_block').html('<div class="row reponse_block"><div class="col-md-offset-3 col-md-6"><div class="content_rep"><div class="col-md-11"><input type="text" name="reponse[' + id + '][]" placeholder="Choix1" class="form-control response"></div></div><div class="col-md-1"><i class="fa fa-plus"></i></div></div></div>');
+                $(this).parents('.groupQuestionSimple').find('.reponse_block').html('<div class="row reponse_block"><div class="col-md-12"><div class="content_rep"><div class="col-md-11"><input type="text" name="reponse[' + id + '][]" placeholder="Choix1" class="form-control response"></div></div><div class="col-md-1"><i class="fa fa-plus"></i></div></div></div>');
             }
             ;
         });
@@ -102,12 +102,14 @@
             newid = parseInt(id) + 1;
             if(newid/2 == Math.round(newid/2)){
                 var offset = "";
+                var div = '</div><div class="row">';
                 $('.box_new_question').addClass('col-md-offset-1');
             }else{
                 var offset = "col-md-offset-1";
+                var div = '';
                 $('.box_new_question').removeClass('col-md-offset-1');
             }
-            $('.groupQuestion').append('<div class="col-md-5 '+offset+' groupQuestionSimple" id="' + newid + '">\n\
+            $('.groupQuestion').append(div+'<div class="col-md-5 '+offset+' groupQuestionSimple" id="' + newid + '">\n\
                         <div class="control-group question_block">\n\
                             <div class="col-md-12">\n\
                                 <h5 class="hr">Question ' + newid + ' :</h5>\n\
@@ -119,17 +121,17 @@
                                 </select>\n\
                             </div>\n\
                             <div class="controls col-md-12 col-centered">\n\
-                                <input id="nom" name="points[1][]" type="text" placeholder="Nombre de points de la question" class="form-control" required>\n\
+                                <input id="nom" name="points[' + newid + '][]" type="text" placeholder="Nombre de points de la question" class="form-control" value="1" required>\n\
                             </div>\n\
                             <div class="controls col-md-12 col-centered">\n\
-                                <input id="nom" name="questions[' + newid + '][]" type="text" placeholder="Votre question" class="form-control" value="" required>\n\
+                                <input id="nom" name="questions[' + newid + '][]" type="text" placeholder="Votre question" class="form-control" value="test" required>\n\
                             </div>\n\
                         </div>\n\
                         <div class="row reponse_block">\n\
                             <div class="col-md-12">\n\
                                 <div class="content_rep">\n\
                                     <div class="col-md-11">\n\
-                                        <input type="text" name="reponse[' + newid + '][]" placeholder="Choix" class="form-control response">\n\
+                                        <input type="text" name="reponse[' + newid + '][]" placeholder="Choix" value="1" class="form-control response">\n\
                                     </div>\n\
                                 </div>\n\
                                 <div class="col-md-1">\n\
