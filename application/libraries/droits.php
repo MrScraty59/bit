@@ -19,21 +19,24 @@ class Droits extends CI_Form_validation {
     public function Droits(){
         $CI =& get_instance();
         
-        //Aller chercher les vrais droits pour la config
-        $droit = 0;        
-        
-        $url = $_SERVER['REDIRECT_QUERY_STRING'];
-        $url = explode('/',$url);
-        array_shift($url);
-        if(sizeof($url) == 1){
-            //Cela veut dire que l'on appel l'index
-            array_push($url, "index");
-        }
-        
-        if(isset($this->droits[$droit]["$url[0]"])){
-            if(in_array($url[1],$this->droits[$droit]["$url[0]"])){
-                //On a pas les droits pour y accéder
-                //redirect('accueil')
+        //Aller chercher les vrais droits pour la config  
+        $user = $CI->session->userdata('user');
+        if(!$user && $_SERVER['REQUEST_URI'] != '/bit/connexion'){
+            redirect(base_url('connexion'));
+        }else if($_SERVER['REQUEST_URI'] != '/bit/connexion'){
+            $url = $_SERVER['REDIRECT_QUERY_STRING'];
+            $url = explode('/',$url);
+            array_shift($url);
+            if(sizeof($url) == 1){
+                //Cela veut dire que l'on appel l'index
+                array_push($url, "index");
+            }
+            $droit = $user->droit;
+            if(isset($this->droits[$droit]["$url[0]"])){
+                if(in_array($url[1],$this->droits[$droit]["$url[0]"])){
+                    //On a pas les droits pour y accéder
+                    redirect('connexion');
+                }
             }
         }
     }
