@@ -69,5 +69,12 @@ class Examens extends CI_Controller {
         //
         
     }
+    
+    public function delete($id = 0) {
+
+        $this->examen->delete($id);
+
+        redirect('examens');
+    }
 
 }

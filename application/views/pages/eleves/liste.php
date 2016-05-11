@@ -26,7 +26,7 @@
                             <td><?= $user->prenom; ?></td>
                             <td><?= $user->mail; ?></td>
                             <td>Classe à rajouter</td>
-                            <td style="text-align:center;"><i class="fa fa-cog"></i> <i class="fa fa-edit"></i> <a href="<?= base_url('compte/delete_professeur/'.$user->id); ?>"<i class="fa fa-trash"></i></a></td>
+                            <td style="text-align:center;"><i class="fa fa-cog"></i> <i class="fa fa-edit"></i> <a href="<?= base_url('eleves/delete/'.$user->id); ?>"<i class="fa fa-trash"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
 
