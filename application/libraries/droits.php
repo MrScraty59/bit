@@ -20,8 +20,7 @@ class Droits extends CI_Form_validation {
         $CI =& get_instance();
         
         //Aller chercher les vrais droits pour la config
-        $droit = 0;
-        
+        $droit = 0;        
         
         $url = $_SERVER['REDIRECT_QUERY_STRING'];
         $url = explode('/',$url);
