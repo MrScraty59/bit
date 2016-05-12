@@ -37,7 +37,27 @@ class Classes extends CI_Controller {
 
         redirect('classes/liste/');
     }
+    public function listeEleves($id) {
+        
+        $data=array();
+    
+        $liste = $this->user->getUserByidClasse($id);
 
+        if(!empty($liste))
+        {
+            foreach($liste as $a_user)
+            {
+                $note[$a_user->id]=$this->user->getNote($id, $a_user->id);
+            }
+        }
+
+        $data['liste'] = $liste;
+        $data['id'] = $id;
+        $data['note'] = $note;
+
+        $this->load->view('template/header');
+        $this->load->view('pages/classes/listeEleves', $data);
+        $this->load->view('template/footer');
+    }
 }
-
 ?>
