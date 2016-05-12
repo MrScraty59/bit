@@ -2,7 +2,7 @@
 
 class Professeurs extends CI_Controller {
 
-    public function liste() {
+    public function liste() { 
         $data = Array();
         $data['users'] = $this->user->getProfs();
 

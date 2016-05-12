@@ -3,7 +3,7 @@
 class Classes extends CI_Controller {
     
     public function liste() {
-        $data = Array();
+        $data = Array(); 
         $data['classes'] = $this->classe->getClasses();
         $this->load->view('template/header');
         $this->load->view('pages/classes/liste', $data);
