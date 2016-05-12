@@ -13,7 +13,8 @@ class Classes extends CI_Controller {
     public function creer() {
         //Initialisation des données
         $data = Array();
-                
+        $data["cours"] = $this->cour->getAll();  
+              
         //Validation du formulaire
         $this->form_validation->set_rules('intitule', 'Intitulé', 'trim|xss_clean|encode_php_tags|required');
 
@@ -21,7 +22,8 @@ class Classes extends CI_Controller {
             //Le formualire est valide, on va créer l'examen
             $classe = new StdClass();
             $classe->intitule = $this->input->post('intitule');
-            
+            $classe->coursIds = json_encode($this->input->post('coursIds'));
+      
             $this->classe->add($classe);
             redirect(base_url('classes/liste'));
         }
@@ -37,6 +39,7 @@ class Classes extends CI_Controller {
 
         redirect('classes/liste/');
     }
+
     public function listeEleves($id) {
         
         $data=array();

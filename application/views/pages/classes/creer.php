@@ -15,6 +15,14 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6 col-md-offset-3" style='margin-top:15px;'>
+                <ul>
+                <?php foreach ($cours as $key => $value) {
+                    echo "<li>" . $value->intitule . "<input style='margin-left:5px;' value='" . $value->id . "' type='checkbox' name='coursIds[]'></li>";
+                }?>
+                </ul>
+            </div>
+
         </div>
         <div class='row'>
             <div class='col-md-12' style='text-align:center;margin-top:30px;'>

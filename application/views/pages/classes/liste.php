@@ -22,7 +22,11 @@
                         <tr>
                             <td><?= $classe->id; ?></td>
                             <td><?= $classe->intitule; ?></td>
-                            <td style="text-align:center;"><i class="fa fa-cog"></i> <i class="fa fa-edit"></i> <a href="<?= base_url('classes/delete/'.$classe->id); ?>"<i class="fa fa-trash"></i></a></td>
+                            <td style="text-align:center;">
+                                <i class="fa fa-cog"></i> 
+                                <a href="<?= base_url('classes/edit/'.$classe->id); ?>"<i class="fa fa-edit"></i></a>
+                                <a href="<?= base_url('classes/delete/'.$classe->id); ?>"<i class="fa fa-trash"></i></a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
 
