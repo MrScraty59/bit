@@ -84,9 +84,10 @@ class Question extends CI_Model {
 
         return $result;
     }
-    public function updateNote($id,$note){
+    public function updateNote($id,$note, $idUtil){
         return $this->db->set('note', $note)
                 ->where('id', $id)
+                ->where('idEtudiant', $idUtil)
                 ->update($this->response);
     }
 }

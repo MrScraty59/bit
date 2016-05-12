@@ -82,6 +82,7 @@
         <div class='row'>
             <div class='col-sm-12' style='text-align:center;margin-top:30px;'>
                 <input type='submit' class="btn btn-success" value="Valider la correction "/>
+                <input style="width:30px" name="id" type="hidden" value="<?php echo $etudiant[0]->id; ?>" required>
             </div>
         </div>
         <?= form_close(); ?>    
