@@ -12,7 +12,8 @@ class Droits extends CI_Form_validation {
         "professeurs" => Array('delete','creer','liste')
         ),
         1 => Array(
-            "eleves" => Array('modifier')
+            "eleves" => Array('modifier'),
+            "examens" => Array('correction')
         )
     );
 
@@ -21,9 +22,12 @@ class Droits extends CI_Form_validation {
         
         //Aller chercher les vrais droits pour la config  
         $user = $CI->session->userdata('user');
-        if(!$user && $_SERVER['REQUEST_URI'] != '/bit/connexion'){
+        //$CI->session->unset_userdata('user');
+        $request_url = explode('/',$_SERVER['REQUEST_URI']);
+        
+        if(!$user && !in_array('connexion',$request_url)){
             redirect(base_url('connexion'));
-        }else if($_SERVER['REQUEST_URI'] != '/bit/connexion'){
+        }else if(!in_array('connexion',$request_url)){
             $url = $_SERVER['REDIRECT_QUERY_STRING'];
             $url = explode('/',$url);
             array_shift($url);
