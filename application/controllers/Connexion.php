@@ -30,11 +30,11 @@ class Connexion extends CI_Controller {
                 $user = $this->user->getFromLogin($login);
                 if($user){
                     $user = $user[0];
-                }
-                if($user->password == $password){
-                    $this->session->unset_userdata('user');
-                    $this->session->set_userdata('user',$user);
-                    //redirect('accueil');
+                    if($user->password == $password){
+                        $this->session->unset_userdata('user');
+                        $this->session->set_userdata('user',$user);
+                        //redirect('accueil');
+                    }
                 }
             }
             $this->load->view('template/header');
