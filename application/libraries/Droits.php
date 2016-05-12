@@ -25,12 +25,10 @@ class Droits extends CI_Form_validation {
         //$CI->session->unset_userdata('user');
         $request_url = explode('/',$_SERVER['REQUEST_URI']);
         
-        if($user){
+        if(isset($user)){
             $droit = $user->droit;
-            if($droit == 0){
-                echo 'Vous êtes connecté en tant qu\'éléve !';
-            }else if($droit == 1){
-                echo 'Vous êtes connecté en tant que Prof !';
+            if(in_array('connexion',$request_url)){
+                redirect(base_url('accueil'));
             }
         }
         
