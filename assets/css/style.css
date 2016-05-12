@@ -68,23 +68,3 @@
     cursor:pointer;
     background:#FAFAFA;
 }
-
-#planning_consult_nbr{
-
-
-}
-
-.planning_consult_title{
-
-    font-weight: bold;
-    margin-top: 50px; 
-}
-
-.planning_consult_debut{
-
-    color:green;
-}
-
-.planning_consult_debut{
-    color:red;
-}
