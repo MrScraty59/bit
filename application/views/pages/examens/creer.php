@@ -1,3 +1,11 @@
+<script>
+        function voir_check(elem){
+        if(elem.checked){
+            var value = elem.parent().find('.response').val();
+            console.log(value);
+        }
+    };
+</script>
 <section id="main-content">
     <section class="wrapper">
 
@@ -56,6 +64,7 @@
                             <div class="content_rep">
                                 <div class="col-md-11">
                                     <input type="text" name="reponse[0][]" placeholder="Choix1" class="form-control response">
+                                    <input type="checkbox" onclick="voir_check(this)" class="bonne_reponse" name="bonne_reponse" value='1'> Bonne réponse?
                                 </div>
                             </div>
                             <div class="col-md-1">
@@ -77,12 +86,21 @@
         <?= form_close(); ?>
     </section>
 </section>
+
 <script>
     $(function () {
+        
+        function checked(elem){
+        if(elem[0].checked){
+            var value = elem.parent().find('.response').val();
+            console.log(value);
+        }
+    };
+        
         $('body').on('click', '.fa-plus', function () {
             id = $(this).parents('.groupQuestionSimple').attr('id');
             if ($(this).parents('.reponse_block').find('.response').val() != '') {
-                $(this).parents('.reponse_block').find('.content_rep').append('<div class="col-md-11"><input type="text" name="reponse[' + id + '][]" placeholder="Choix1" class="form-control"></div>');
+                $(this).parents('.reponse_block').find('.content_rep').append('<div class="col-md-11"><input type="text" name="reponse[' + id + '][]" placeholder="Choix1" class="form-control">    <input type="checkbox" class="bonne_reponse" name="bonne_reponse"> Bonne réponse?</div>');
             } else {
                 alert('Le champs précédent n\'est pas rempli!');
             }
@@ -93,7 +111,7 @@
             if ($(this).val() == "libre") {
                 $(this).parents('.groupQuestionSimple').find('.reponse_block').html('');
             } else {
-                $(this).parents('.groupQuestionSimple').find('.reponse_block').html('<div class="row reponse_block"><div class="col-md-12"><div class="content_rep"><div class="col-md-11"><input type="text" name="reponse[' + id + '][]" placeholder="Choix1" class="form-control response"></div></div><div class="col-md-1"><i class="fa fa-plus"></i></div></div></div>');
+                $(this).parents('.groupQuestionSimple').find('.reponse_block').html('<div class="row reponse_block"><div class="col-md-12"><div class="content_rep"><div class="col-md-11"><input type="text" name="reponse[' + id + '][]" placeholder="Choix1" class="form-control response"><input type="checkbox" class="bonne_reponse" name="bonne_reponse"> Bonne réponse?</div></div><div class="col-md-1"><i class="fa fa-plus"></i></div></div></div>');
             }
             ;
         });
@@ -112,7 +130,7 @@
             $('.groupQuestion').append(div + '<div class="col-md-5 ' + offset + ' groupQuestionSimple" id="' + newid + '">\n\
                         <div class="control-group question_block">\n\
                             <div class="col-md-12">\n\
-                                <h5 class="hr">Question ' + newid + ' :</h5>\n\
+                                <h5 class="hr">Question ' + (newid + 1) + ' :</h5>\n\
                             </div>\n\
                             <div class="col-md-12 col-centered">\n\
                                 <select name="typeQuestion[' + newid + '][]" id="typeQuestion" class="form-control typeQuestion" style="width:100%">\n\
@@ -132,6 +150,7 @@
                                 <div class="content_rep">\n\
                                     <div class="col-md-11">\n\
                                         <input type="text" name="reponse[' + newid + '][]" placeholder="Choix" class="form-control response">\n\
+                                        <input type="checkbox" onclick="voir_check()" class="bonne_reponse" name="bonne_reponse"> Bonne réponse?\n\
                                     </div>\n\
                                 </div>\n\
                                 <div class="col-md-1">\n\
@@ -143,6 +162,8 @@
         ');
             return false;
         });
+        
+        
 
         $('.box_new_question').each(function () {
             var $this = $(this);
