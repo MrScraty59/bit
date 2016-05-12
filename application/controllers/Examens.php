@@ -84,11 +84,15 @@ class Examens extends CI_Controller {
         if(!$data['examen']):
             redirect($_SERVER['HTTP_REFERER']);
         endif;
-        $data['examen']->questions = shuffle($this->question->getFromExamen($id));
-        var_dump($data['examen']->questions);/*
+        
+        $data['examen']->questions = Array();
+        $data['examen']->cours = $this->cour->constructeur($data['examen']->idCours)[0];
+        $data['examen']->questions = $this->question->getFromExamen($id);
+        shuffle($data['examen']->questions);
+        
         $this->load->view('template/header');
         $this->load->view('pages/examens/passer', $data);
-        $this->load->view('template/footer');*/
+        $this->load->view('template/footer');
     }
 
 }
