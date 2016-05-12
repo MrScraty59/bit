@@ -4,9 +4,9 @@
         <div class="row">
             <h4 class="hr">Créer un examen</h4>
         </div>
+        <?= form_open(base_url('examens/creer/')); ?>  
         <div class="row">
             <div class="col-md-6 col-md-offset-3" style='margin-top:15px;'>
-                <?= form_open(base_url('examens/creer/')); ?>  
                 <div class="control-group col-md-12">
                     <label class="control-label col-md-3 col-centered" for="nom">Titre *</label>
                     <div class="controls col-md-9 col-centered">
@@ -100,16 +100,16 @@
         $('body').on('click', '.box_new_question', function () {
             id = $('.groupQuestionSimple').last().attr('id');
             newid = parseInt(id) + 1;
-            if(newid/2 == Math.round(newid/2)){
+            if (newid / 2 == Math.round(newid / 2)) {
                 var offset = "";
                 var div = '</div><div class="row">';
                 $('.box_new_question').addClass('col-md-offset-1');
-            }else{
+            } else {
                 var offset = "col-md-offset-1";
                 var div = '';
                 $('.box_new_question').removeClass('col-md-offset-1');
             }
-            $('.groupQuestion').append(div+'<div class="col-md-5 '+offset+' groupQuestionSimple" id="' + newid + '">\n\
+            $('.groupQuestion').append(div + '<div class="col-md-5 ' + offset + ' groupQuestionSimple" id="' + newid + '">\n\
                         <div class="control-group question_block">\n\
                             <div class="col-md-12">\n\
                                 <h5 class="hr">Question ' + newid + ' :</h5>\n\
