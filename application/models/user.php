@@ -3,9 +3,9 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Examen extends CI_Model {
+class User extends CI_Model {
 
-    protected $table = 'examen';
+    protected $table = 'users';
 
     public function constructeur($id = 0) {
         if ($id == 0) {
@@ -22,10 +22,33 @@ class Examen extends CI_Model {
         return $result;
     }
 
-    public function getAll() {
+    public function getProfs() {
 
         $result = $this->db->select('*')
                 ->from($this->table)
+                ->where('droit',1)
+                ->get()
+                ->result();
+
+        return $result;
+    }
+
+    public function getEleves() {
+
+        $result = $this->db->select('*')
+                ->from($this->table)
+                ->where('droit',0)
+                ->get()
+                ->result();
+
+        return $result;
+    }
+
+    public function getFromLogin($data) {
+
+        $result = $this->db->select('*')
+                ->from($this->table)
+                ->where('login',$data)
                 ->get()
                 ->result();
 
@@ -36,7 +59,7 @@ class Examen extends CI_Model {
 
         $this->db->insert($this->table, $data);
 
-        return $this->db->insert_id();;
+        return $this->db->insert_id();
     }
 
     public function delete($data = '') {
@@ -58,6 +81,16 @@ class Examen extends CI_Model {
         $result = $this->db->where('id', $id);
         $this->db->update($this->table, $data);
         return $result;
+    }
+
+    public function getUserByEmail($email){
+
+        return $this->db->select('*')
+                ->from($this->table)
+                ->where('mail', $email)
+                ->limit(1)
+                ->get()
+                ->result();
     }
 
 }
