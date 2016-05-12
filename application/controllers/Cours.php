@@ -6,7 +6,7 @@ class Cours extends CI_Controller {
         $data = Array(); 
         $data['cours'] = $this->cour->getAll();
         $this->load->view('template/header');
-        $this->load->view('pages/classes/liste', $data);
+        $this->load->view('pages/cours/liste', $data);
         $this->load->view('template/footer');
     }
 
