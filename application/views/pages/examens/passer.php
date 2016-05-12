@@ -2,76 +2,34 @@
     <section class="wrapper">
 
         <div class="row">
-            <h4 class="hr">Créer un examen</h4>
-        </div>
-        <?= form_open(base_url('examens/creer/')); ?>  
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3" style='margin-top:15px;'>
-                <div class="control-group col-md-12">
-                    <label class="control-label col-md-3 col-centered" for="nom">Titre *</label>
-                    <div class="controls col-md-9 col-centered">
-                        <input id="nom" name="titre" type="text" placeholder="" class="form-control" value="<?php echo set_value('titre'); ?>" required>
-                        <?php echo form_error('titre'); ?>
-                    </div>
-                </div>
-                <br/>
-                <br/>
-                <div class="control-group col-md-12">
-                    <label class="control-label col-md-3 col-centered" for="cours">Cours *</label>
-                    <div class="controls col-md-9 col-centered">
-                        <select class='form-control' name='cours'>
-                            <?php foreach ($cours as $cour): ?>
-                                <option value="<?= $cour->id; ?>" <?php echo set_select('cours', $cour->id); ?>><?= $cour->intitule ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <?php echo form_error('cours'); ?>
-                    </div>
-                </div>
-            </div>
+            <h3 class="hr">Examen : <?= $examen->nom; ?></h3>
+            <p class="citation"><?= $examen->cours->intitule; ?></p>
         </div>
         <div class="row">
-            <div class="groupQuestion">
-                <div class="col-md-5 col-md-offset-1 groupQuestionSimple" id="0">
-                    <div class="control-group question_block">
-                        <div class="col-md-12">
-                            <h5 class="hr">Question 1 :</h5>
-                        </div>
-                        <div class="col-md-12 col-centered">
-                            <select name="typeQuestion[0][]" id="typeQuestion" class="form-control typeQuestion" style="width:100%">
-                                <option value="multiple">Choix multiple</option>
-                                <option value="libre">Réponse libre</option>
-                            </select>
-                        </div>
-                        <div class="controls col-md-12 col-centered">
-                            <input id="nom" name="points[0][]" type="text" placeholder="Nombre de points de la question" class="form-control" required>
-                            <?php echo form_error('points'); ?>
-                        </div>
-                        <div class="controls col-md-12 col-centered">
-                            <input id="nom" name="questions[0][]" type="text" placeholder="Votre question" class="form-control" value="<?php echo set_value('question'); ?>" required>
-                            <?php echo form_error('questions'); ?>
-                        </div>
-                    </div>
-                    <div class="row reponse_block">
-                        <div class="col-md-12">
-                            <div class="content_rep">
-                                <div class="col-md-11">
-                                    <input type="text" name="reponse[0][]" placeholder="Choix1" class="form-control response">
-                                </div>
-                            </div>
-                            <div class="col-md-1">
-                                <i class="fa fa-plus"></i>
-                            </div>
-                        </div>
-                    </div>
+            <h4 class="hr">Questions</h4>
+        </div>
+        <?= form_open(base_url('examens/passer/')); ?>
+        <div class="row">
+            <?php foreach($examen->questions as $question){ ?>
+            <div class="col-md-12">
+            <p class="citation"><?= $question->question; ?></p>
+            <br/>
+                <div class="reponses col-md-4 col-md-offset-4">
+                    <?php if($question->type == "multiple"){ 
+                            $propositions = json_decode($question->propositions);
+                            foreach($propositions as $proposition){
+                    ?>
+                        <input type="checkbox" name="reponses[<?= $question->id; ?>][]" value="<?= $proposition; ?>"/>&nbsp; <?= $proposition; ?><br/>
+                    <?php }}else if($question->type == "libre"){ ?>
+                        <textarea rows="5" name="reponses[<?= $question->id; ?>][]"></textarea>
+                    <?php } ?>
                 </div>
             </div>
-            <div class="col-md-5 center box_new_question">
-                <a class="btn NewQuestion"><i class="fa fa-plus"></i><br/><br/>New question</a>
-            </div>
+            <?php } ?>
         </div>
         <div class='row'>
             <div class='col-md-12' style='text-align:center;margin-top:30px;'>
-                <input type='submit' class="btn btn-success" value="Créer l'examen"/>
+                <input type='submit' class="btn btn-success" value="Enregistrer vos réponses"/>
             </div>
         </div>
         <?= form_close(); ?>

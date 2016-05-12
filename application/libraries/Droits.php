@@ -25,6 +25,14 @@ class Droits extends CI_Form_validation {
         //$CI->session->unset_userdata('user');
         $request_url = explode('/',$_SERVER['REQUEST_URI']);
         
+        if($user){
+            $droit = $user->droit;
+            if($droit == 0){
+                echo 'Vous êtes connecté en tant qu\'éléve !';
+            }else if($droit == 1){
+                echo 'Vous êtes connecté en tant que Prof !';
+            }
+        }
         
         
         if(!$user && !in_array('connexion',$request_url)){
@@ -36,13 +44,6 @@ class Droits extends CI_Form_validation {
             if(sizeof($url) == 1){
                 //Cela veut dire que l'on appel l'index
                 array_push($url, "index");
-            }
-            $droit = $user->droit;
-            
-            if($droit == 0){
-                echo 'Vous êtes connecté en tant qu\'éléve !';
-            }else if($droit == 1){
-                echo 'Vous êtes connecté en tant que Prof !';
             }
             if(isset($this->droits[$droit]["$url[0]"])){
                 if(in_array($url[1],$this->droits[$droit]["$url[0]"])){
