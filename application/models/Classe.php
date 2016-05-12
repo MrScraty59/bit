@@ -27,6 +27,7 @@ class Classe extends CI_Model {
 
         $result = $this->db->select('*')
                 ->from($this->table)
+                ->order_by("id", "ASC")                
                 ->get()
                 ->result();
 

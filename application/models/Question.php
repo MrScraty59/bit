@@ -6,6 +6,7 @@ if (!defined('BASEPATH'))
 class Question extends CI_Model {
 
     protected $table = 'question';
+    protected $response = 'reponsesEtudiant';
 
     public function constructeur($id = 0) {
         if ($id == 0) {
@@ -70,5 +71,22 @@ class Question extends CI_Model {
         $this->db->update($this->table, $data);
         return $result;
     }
+    
+    public function getFromExamenAndResponse($id){
 
+        $result = $this->db->select('*')
+                ->from($this->table .' as q')
+                ->join($this->response .' as r', 'q.id=r.idQuestion')
+                ->where('idExamen', $id)
+                ->order_by("q.id","ASC")
+                ->get()
+                ->result();
+
+        return $result;
+    }
+    public function updateNote($id,$note){
+        return $this->db->set('note', $note)
+                ->where('id', $id)
+                ->update($this->response);
+    }
 }

@@ -92,5 +92,31 @@ class User extends CI_Model {
                 ->get()
                 ->result();
     }
+    
+    public function getUserById($id){
+      return $this->db->select('*')
+                ->from($this->table)
+                ->where('id', $id)
+                ->limit(1)
+                ->get()
+                ->result();
+   }
+   
+   public function getUserByidClasse($idClasse){
 
+        return $this->db->select('*')
+                ->from($this->table)
+                ->where('idClasse', $idClasse)
+                ->get()
+                ->result();
+    }
+
+    public function getNote($idExamen, $idEtudiant)    {
+        return $this->db->select('sum(note) as total')
+                ->from('question')
+                ->join('reponsesEtudiant', 'reponsesEtudiant.idQuestion=question.id')
+                ->where(array('idExamen' => $idExamen, 'idEtudiant' => $idEtudiant))
+                ->get()
+                ->result();
+    }
 }

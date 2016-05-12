@@ -6,6 +6,7 @@ if (!defined('BASEPATH'))
 class Examen extends CI_Model {
 
     protected $table = 'examen';
+    protected $cours = 'cours';
 
     public function constructeur($id = 0) {
         if ($id == 0) {
@@ -57,6 +58,19 @@ class Examen extends CI_Model {
         }
         $result = $this->db->where('id', $id);
         $this->db->update($this->table, $data);
+        return $result;
+    }
+    
+    public function getExamenByIdAndCours($id) {
+
+        $result = $this->db->select('*')
+                ->from($this->table . ' as v')
+                ->join($this->cours . ' as c', 'v.idCours = c.id')
+                ->where('v.id', $id)
+                ->limit(1)
+                ->get()
+                ->result();
+        
         return $result;
     }
 
