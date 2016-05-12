@@ -1,35 +1,53 @@
 <section id="main-content">
     <section class="wrapper">
-
         <div class="row">
-            <h3 class="hr">Examen : <?= $examen->nom; ?></h3>
-            <p class="citation"><?= $examen->cours->intitule; ?></p>
+            <h3 class="hr">Programmer un examen</h3>
+            <p class="citation"><?= $examen->nom; ?></p>
         </div>
+        <?= form_open(base_url('examens/programmer/'.$examen->id)); ?>  
         <div class="row">
-            <h4 class="hr">Questions</h4>
-        </div>
-        <?= form_open(base_url('examens/passer/'.$examen->id)); ?>
-        <div class="row">
-            <?php foreach($examen->questions as $question){ ?>
-            <div class="col-md-12">
-            <p class="citation"><?= $question->question; ?></p>
-            <br/>
-                <div class="reponses col-md-4 col-md-offset-4">
-                    <?php if($question->type == "multiple"){ 
-                            $propositions = json_decode($question->propositions);
-                            foreach($propositions as $proposition){
-                    ?>
-                        <input type="checkbox" name="reponses[<?= $question->id; ?>][]" value="<?= $proposition; ?>"/>&nbsp; <?= $proposition; ?><br/>
-                    <?php }}else if($question->type == "libre"){ ?>
-                        <textarea rows="5" name="reponses[<?= $question->id; ?>][]"></textarea>
-                    <?php } ?>
+                <div class="control-group col-md-6 col-md-offset-3">
+                    <label class="control-label col-md-3 col-centered" for="date_debut">Date *</label>
+                    <div class="controls col-md-9 col-centered">
+                        <input type='date' name='date_debut' class='form-control'/>
+                        <?php echo form_error('date_debut'); ?>
                 </div>
             </div>
-            <?php } ?>
+        </div>
+        <div class="row">
+                <div class="control-group col-md-6 col-md-offset-3">
+                    <label class="control-label col-md-3 col-centered" for="heure">Heure *</label>
+                    <div class="controls col-md-9 col-centered">
+                        <input type='time' name='heure' class='form-control'/>
+                        <?php echo form_error('heure'); ?>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="control-group col-md-6 col-md-offset-3">
+                    <label class="control-label col-md-3 col-centered" for="duree">Durée *</label>
+                    <div class="controls col-md-9 col-centered">
+                        <input type='time' name='duree' class='form-control'/>
+                        <?php echo form_error('duree'); ?>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="control-group col-md-6 col-md-offset-3">
+                <label class="control-label col-md-3 col-centered" for="sexe">Classe *</label>
+                <div class="controls col-md-9 col-centered">
+                    <select name="classe" class="form-control">
+                        <?php foreach($classes as $classe){ ?>
+                        <option value="<?= $classe->id; ?>"><?= $classe->intitule; ?></option>
+                        <?php } ?>
+                    </select>
+                    <?php echo form_error('sexe'); ?>
+                </div>
+            </div>
         </div>
         <div class='row'>
             <div class='col-md-12' style='text-align:center;margin-top:30px;'>
-                <input type='submit' class="btn btn-success" value="Enregistrer vos réponses"/>
+                <input type='submit' class="btn btn-success" value="Programmer"/>
             </div>
         </div>
         <?= form_close(); ?>
@@ -79,17 +97,17 @@
                                 </select>\n\
                             </div>\n\
                             <div class="controls col-md-12 col-centered">\n\
-                                <input id="nom" name="points[' + newid + '][]" type="text" placeholder="Nombre de points de la question" class="form-control" value="1" required>\n\
+                                <input id="nom" name="points[' + newid + '][]" type="text" placeholder="Nombre de points de la question" class="form-control" required>\n\
                             </div>\n\
                             <div class="controls col-md-12 col-centered">\n\
-                                <input id="nom" name="questions[' + newid + '][]" type="text" placeholder="Votre question" class="form-control" value="test" required>\n\
+                                <input id="nom" name="questions[' + newid + '][]" type="text" placeholder="Votre question" class="form-control" required>\n\
                             </div>\n\
                         </div>\n\
                         <div class="row reponse_block">\n\
                             <div class="col-md-12">\n\
                                 <div class="content_rep">\n\
                                     <div class="col-md-11">\n\
-                                        <input type="text" name="reponse[' + newid + '][]" placeholder="Choix" value="1" class="form-control response">\n\
+                                        <input type="text" name="reponse[' + newid + '][]" placeholder="Choix" class="form-control response">\n\
                                     </div>\n\
                                 </div>\n\
                                 <div class="col-md-1">\n\

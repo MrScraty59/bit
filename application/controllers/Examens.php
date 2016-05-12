@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: text/html; charset=utf-8');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Examens extends CI_Controller { 
@@ -64,10 +64,33 @@ class Examens extends CI_Controller {
         if ($idExamen == 0) {
             redirect($_SERVER['HTTP_REFERER']);
         }
+        $data['examen'] = $this->examen->constructeur($idExamen)[0];
+        $data['classes'] = $this->classe->getClasses();
+        if(!$data['examen']):
+            redirect($_SERVER['HTTP_REFERER']);
+        endif;
         
-        //Formulaire
-        //
+        $this->form_validation->set_rules('date_debut', 'Date de début', 'trim|xss_clean|encode_php_tags|required');
+        $this->form_validation->set_rules('heure', 'Heure', 'trim|xss_clean|encode_php_tags|required');
+        $this->form_validation->set_rules('duree', 'Durée', 'trim|xss_clean|encode_php_tags|required');
         
+        if($this->form_validation->run()){
+            
+            $stamp = strtotime($this->input->post('date_debut') . ' ' . $this->input->post('heure'));
+            date_default_timezone_set('UTC');
+            $date = date("d-m-Y H:i", $stamp);
+            $time = strtotime($date);
+            $prog = new StdClass();
+            $prog->idExamen = $idExamen;
+            $prog->idClasse = $this->input->post('classe');
+            $prog->debut = $time;
+            $prog->duree = $this->input->post('duree');
+            $this->prog->add($prog);
+        }
+        
+        $this->load->view('template/header');
+        $this->load->view('pages/examens/programmer', $data);
+        $this->load->view('template/footer');
     }
     
     public function delete($id = 0) {
@@ -78,17 +101,32 @@ class Examens extends CI_Controller {
     }
     
     public function passer($id = 0) {
-
+        $user = $this->session->userdata('user');
         $data = Array();
         $data['examen'] = $this->examen->constructeur($id)[0];
         if(!$data['examen']):
             redirect($_SERVER['HTTP_REFERER']);
         endif;
-        $data['examen']->questions = shuffle($this->question->getFromExamen($id));
-        var_dump($data['examen']->questions);/*
+        
+        $data['examen']->questions = Array();
+        $data['examen']->cours = $this->cour->constructeur($data['examen']->idCours)[0];
+        $data['examen']->questions = $this->question->getFromExamen($id);
+        shuffle($data['examen']->questions);
+        
+        
+        if($this->input->post()):
+            foreach($data['examen']->questions as $question):
+                $reponses = new stdClass(); 
+                $reponses->idEtudiant = $user->id;
+                $reponses->idQuestion = $question->id;
+                $reponses->reponses = json_encode($this->input->post('reponses')[$question->id]);
+                $this->reponsesEtudiant->add($reponses);
+            endforeach;
+        endif;
+        
         $this->load->view('template/header');
         $this->load->view('pages/examens/passer', $data);
-        $this->load->view('template/footer');*/
+        $this->load->view('template/footer');
     }
     
     public function corriger($idEtudiant, $idExamen){

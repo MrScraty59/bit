@@ -6,3 +6,4 @@
 	}
 ?>
 </table>
+<p>Moyenne : <b><?php  echo $somme/count($note); ?></b></p>

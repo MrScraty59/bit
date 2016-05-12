@@ -1,12 +1,12 @@
 <?php
 
-class Classes extends CI_Controller {
+class Cours extends CI_Controller {
     
     public function liste() {
         $data = Array(); 
-        $data['classes'] = $this->classe->getClasses();
+        $data['cours'] = $this->cour->getAll();
         $this->load->view('template/header');
-        $this->load->view('pages/classes/liste', $data);
+        $this->load->view('pages/cours/liste', $data);
         $this->load->view('template/footer');
     }
 
@@ -19,23 +19,23 @@ class Classes extends CI_Controller {
 
         if ($this->input->post() && $this->form_validation->run()) {
             //Le formualire est valide, on va créer l'examen
-            $classe = new StdClass();
-            $classe->intitule = $this->input->post('intitule');
+            $cour = new StdClass();
+            $cour->intitule = $this->input->post('intitule');
             
-            $this->classe->add($classe);
-            redirect(base_url('classes/liste'));
+            $this->cour->add($cour);
+            redirect(base_url('cours/liste'));
         }
 
         $this->load->view('template/header');
-        $this->load->view('pages/classes/creer', $data);
+        $this->load->view('pages/cours/creer', $data);
         $this->load->view('template/footer');
     }
 
     public function delete($id = 0) {
 
-        $this->classe->delete($id);
+        $this->cour->delete($id);
 
-        redirect('classes/liste/');
+        redirect('cours/liste/');
     }
     
     public function listeEleves($id) {
