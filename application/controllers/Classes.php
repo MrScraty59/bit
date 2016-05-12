@@ -39,7 +39,16 @@ class Classes extends CI_Controller {
 
         redirect('classes/liste/');
     }
-
+    public function edit($id = 0) {
+        //Initialisation des données
+        $data = Array();
+        $data["classe"] = $this->classe->constructeur($id);
+        $data["cours"] = $this->cour->getAll();
+        
+        $this->load->view('template/header');
+        $this->load->view('pages/classes/edit', $data);
+        $this->load->view('template/footer');
+    }
     public function listeEleves($id) {
         
         $data=array();
