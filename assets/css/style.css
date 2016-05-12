@@ -68,3 +68,13 @@
     cursor:pointer;
     background:#FAFAFA;
 }
+
+.citation{
+    text-align:center;
+    text-transform:uppercase;
+    font-style:italic;
+}
+
+textarea{
+    width:100% !important;
+}

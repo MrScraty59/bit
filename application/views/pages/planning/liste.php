@@ -17,7 +17,7 @@
                     <tbody>
                         <?php foreach ($plannings as $planning): ?>
                             <tr>
-                                <td><?= $planning->examen->nom; ?></td>
+                                <td><a href="<?= base_url('examens/passer/'.$planning->examen->id); ?>"><?= $planning->examen->nom; ?></a></td>
                                 <td><?= $planning->examen->cours->intitule; ?></td>
                                 <td><?= date("d/m/Y", $planning->debut); ?></td>
                                 <td><?= $planning->duree; ?></td>

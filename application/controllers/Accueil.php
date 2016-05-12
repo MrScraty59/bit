@@ -48,6 +48,4 @@ class Accueil extends CI_Controller {
             $this->load->view('pages/accueil/prof', $data);
             $this->load->view('template/footer');
         }
-        
-        
 }
