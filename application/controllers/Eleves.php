@@ -1,6 +1,6 @@
 <?php
 
-class Eleves extends CI_Controller {
+class Eleves extends CI_Controller {  
     
     public function liste() {
         $data = Array();

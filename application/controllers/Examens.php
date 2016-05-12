@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Examens extends CI_Controller {
+class Examens extends CI_Controller { 
 
     public function index() {
         $data = Array();
@@ -75,6 +75,20 @@ class Examens extends CI_Controller {
         $this->examen->delete($id);
 
         redirect('examens');
+    }
+    
+    public function passer($id = 0) {
+
+        $data = Array();
+        $data['examen'] = $this->examen->constructeur($id)[0];
+        if(!$data['examen']):
+            redirect($_SERVER['HTTP_REFERER']);
+        endif;
+        $data['examen']->questions = shuffle($this->question->getFromExamen($id));
+        var_dump($data['examen']->questions);/*
+        $this->load->view('template/header');
+        $this->load->view('pages/examens/passer', $data);
+        $this->load->view('template/footer');*/
     }
 
 }

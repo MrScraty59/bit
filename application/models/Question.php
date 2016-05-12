@@ -32,6 +32,17 @@ class Question extends CI_Model {
         return $result;
     }
 
+    public function getFromExamen($id){
+
+        $result = $this->db->select('*')
+                ->from($this->table)
+                ->where('idExamen', $id)
+                ->get()
+                ->result();
+
+        return $result;
+    }
+
     public function add($data) {
 
         $this->db->insert($this->table, $data);
