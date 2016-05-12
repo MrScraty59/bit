@@ -121,17 +121,17 @@
                                 </select>\n\
                             </div>\n\
                             <div class="controls col-md-12 col-centered">\n\
-                                <input id="nom" name="points[' + newid + '][]" type="text" placeholder="Nombre de points de la question" class="form-control" value="1" required>\n\
+                                <input id="nom" name="points[' + newid + '][]" type="text" placeholder="Nombre de points de la question" class="form-control" required>\n\
                             </div>\n\
                             <div class="controls col-md-12 col-centered">\n\
-                                <input id="nom" name="questions[' + newid + '][]" type="text" placeholder="Votre question" class="form-control" value="test" required>\n\
+                                <input id="nom" name="questions[' + newid + '][]" type="text" placeholder="Votre question" class="form-control" required>\n\
                             </div>\n\
                         </div>\n\
                         <div class="row reponse_block">\n\
                             <div class="col-md-12">\n\
                                 <div class="content_rep">\n\
                                     <div class="col-md-11">\n\
-                                        <input type="text" name="reponse[' + newid + '][]" placeholder="Choix" value="1" class="form-control response">\n\
+                                        <input type="text" name="reponse[' + newid + '][]" placeholder="Choix" class="form-control response">\n\
                                     </div>\n\
                                 </div>\n\
                                 <div class="col-md-1">\n\

@@ -5,6 +5,13 @@
     padding-top:15px;
 }
 
+.citation{
+    text-transform: uppercase;
+    text-align:center;
+    margin:0 auto;
+    font-style:italic;
+}
+
 .hr:after{
     content: "";
     display: block;
@@ -67,4 +74,12 @@
 .box_new_question:hover{
     cursor:pointer;
     background:#FAFAFA;
+}
+
+.reponses{
+    text-align:left;
+}
+
+textarea {
+    width:100%;
 }
