@@ -4,7 +4,7 @@
         <div class="row">
             <h4 class="hr">Corriger l'examen de <?php echo $etudiant[0]->nom; ?></h4>
         </div>
-        <?= form_open(base_url('examens/notation/')); ?>  
+        <?= form_open(base_url('examens/notation/'.$etudiant[0]->idClasse)); ?>  
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3" style='margin-top:15px;'>
                 <div class="control-group col-sm-12">
