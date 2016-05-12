@@ -140,12 +140,12 @@ class Examens extends CI_Controller {
     
     public function notation($idClasse){
         $this->form_validation->set_rules('points', 'Points', 'trim|xss_clean|encode_php_tags|required|numeric');
-        var_dump($this->input->post());
+        $id = $this->input->post('id');
         foreach ($this->input->post('points') as $key => $value) {
-            $this->question->updateNote($key,$value);
+            $this->question->updateNote($key,$value, $id);
         }
         // faire un retour a la liste des examens a corriger.
-        redirect('classes/listeEleves/'.$idClasse);
+        //redirect('classes/listeEleves/'.$idClasse);
     }
     
 
