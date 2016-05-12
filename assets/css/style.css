@@ -83,3 +83,8 @@
 textarea {
     width:100%;
 }
+
+.fa{
+    margin-left:0;
+    margin-right:10px;
+}

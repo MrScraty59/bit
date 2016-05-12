@@ -22,7 +22,7 @@
                         <tr>
                             <td><?= $exam->nom; ?></td>
                             <td><?= $exam->cours->intitule; ?></td>
-                            <td style="text-align:center;"><i class="fa fa-cog"></i> <i class="fa fa-edit"></i> <a href="<?= base_url('examens/delete/'.$exam->id); ?>"<i class="fa fa-trash"></i></a></td>
+                            <td style="text-align:center;"><a href="<?= base_url('examens/programmer/'.$exam->id); ?>"<i class="fa fa-calendar-o"></i></a><i class="fa fa-edit"></i> <a href="<?= base_url('examens/delete/'.$exam->id); ?>"<i class="fa fa-trash"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
 
