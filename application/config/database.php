@@ -75,12 +75,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => 'gdp',
+	'hostname' => 'capiaure_joomla.mysql.db',
+	'username' => 'capiaure_joomla',
+	'password' => 'alteclan3',
+	'database' => 'capiaure_joomla',
 	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
+	'dbprefix' => 'gdp__',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
