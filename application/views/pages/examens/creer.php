@@ -100,7 +100,7 @@
         $('body').on('click', '.box_new_question', function () {
             id = $('.groupQuestionSimple').last().attr('id');
             newid = parseInt(id) + 1;
-            if (newid / 2 == Math.round(newid / 2)) {
+            if (newid / 2 != Math.round(newid / 2)) {
                 var offset = "";
                 var div = '</div><div class="row">';
                 $('.box_new_question').addClass('col-md-offset-1');
