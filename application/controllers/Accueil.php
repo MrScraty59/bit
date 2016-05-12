@@ -21,7 +21,6 @@ class Accueil extends CI_Controller {
         
         public function index(){
             $user = $this->session->userdata('user');
-            var_dump($user);
             if($user->droit == 0){
                 //c'est un étudiant
                 $this->accueilEtudiant();

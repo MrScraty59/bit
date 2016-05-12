@@ -63,8 +63,9 @@
                     <label class="control-label col-md-3 col-centered" for="classe">Classe *</label>
                     <div class="controls col-md-9 col-centered">
                         <select name="classe" class="form-control">
-                            <option value="10">I4</option>
-                            <option value="20">I5</option>
+                            <?php foreach($classes as $classe): ?>
+                            <option value="<?= $classe->id; ?>"><?= $classe->intitule; ?></option>
+                            <?php endforeach; ?>
                         </select>
                         <?php echo form_error('classe'); ?>
                     </div>

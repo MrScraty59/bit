@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'brzepka.ovh',
-	'username' => 'gdp',
-	'password' => 'gdp',
-	'database' => 'gdp',
+	'hostname' => 'capiaure_joomla.mysql.db',
+	'username' => 'capiaure_joomla',
+	'password' => 'alteclan3',
+	'database' => 'capiaure_joomla',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => 'gdp__',
 	'pconnect' => FALSE,

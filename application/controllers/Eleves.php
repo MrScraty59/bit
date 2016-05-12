@@ -15,7 +15,7 @@ class Eleves extends CI_Controller {
         //Initialisation des données
         $data = Array();
         
-        //ALLER CHERCHER LES CLASSES!!!!!
+        $data['classes'] = $this->classe->getClasses();
         
         //Validation du formulaire
         $this->form_validation->set_rules('sexe', 'Sexe', 'trim|xss_clean|encode_php_tags|required');
