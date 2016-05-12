@@ -1,0 +1,90 @@
+.hr{
+    text-transform: uppercase;
+    text-align:center;
+    margin:0 auto;
+    padding-top:15px;
+}
+
+.hr:after{
+    content: "";
+    display: block;
+    height: 1px;
+    width: 40%;
+    background: #000000;
+    text-align:center;
+    margin:0 auto;
+    margin-top: 10px;
+    margin-bottom : 10px;
+}
+
+.groupQuestionSimple{
+    margin-top:20px;
+}
+
+.groupQuestionSimple{
+    padding:20px;
+}
+
+.form-control{
+    margin-top:5px;
+}
+
+.fa-plus{
+    font-size:20pt !important;
+    color:lightblue;
+    padding-top:10px;
+}
+
+.fa-plus:hover{
+    cursor:pointer;
+}
+
+.center{
+    margin:0 auto;
+    text-align:center;
+}
+
+.box_new_question{
+    transition: color 0.5s linear;
+    border-radius:10px;
+    padding:20px;
+    border: dashed 1px #111;
+    bottom:0;
+}
+
+.col-md-offset-1{
+    margin-left: 8.33333333% !important;
+}
+
+.box_new_question a{
+    color: lightblue;
+}
+
+.box_new_question:hover a{
+    color: lightblue;
+}
+
+.box_new_question:hover{
+    cursor:pointer;
+    background:#FAFAFA;
+}
+
+#planning_consult_nbr{
+
+
+}
+
+.planning_consult_title{
+
+    font-weight: bold;
+    margin-top: 50px; 
+}
+
+.planning_consult_debut{
+
+    color:green;
+}
+
+.planning_consult_debut{
+    color:red;
+}

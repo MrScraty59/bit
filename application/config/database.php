@@ -75,12 +75,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '192.168.43.159',
-	'username' => '',
-	'password' => '',
+	'hostname' => 'brzepka.ovh',
+	'username' => 'gdp',
+	'password' => 'gdp',
 	'database' => 'gdp',
 	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
+	'dbprefix' => 'gdp__',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
