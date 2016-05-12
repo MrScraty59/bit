@@ -33,7 +33,7 @@ class Connexion extends CI_Controller {
                     if($user->password == $password){
                         $this->session->unset_userdata('user');
                         $this->session->set_userdata('user',$user);
-                        //redirect('accueil');
+                        redirect(base_url('accueil'));
                     }
                 }
             }

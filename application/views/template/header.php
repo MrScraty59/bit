@@ -26,3 +26,4 @@
         
     </head>
     <body>
+        <?php $url = $_SERVER['REDIRECT_QUERY_STRING']; $url = explode('/',$url); if(!in_array("connexion",$url)){include_once 'menu.php';} ?>
